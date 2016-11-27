@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+
+<ul>
+	<li>
+		<%= link_to "News", '#' %> <br/>
+	</li>
+
+	<li>
+		<%= link_to "Contacts", '#' %> <br/>
+	</li>
+
+	<li>
+		<%= link_to "Tour programm", '#' %> <br/>
+	</li>
+
+	<li>
+		<%= link_to "Account settings", edit_user_registration_path %> <br/>
+	</li>
+	<li>
+		<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+	</li>
+</ul>	
+
+<% else %>
+
+<ul>
+	<li>
+		<%= link_to "Log in", new_user_session_path %> <br/>
+	</li>
+	<li>
+		<%= link_to "Sign in", new_user_registration_path %>
+	</li>
+</ul>
+
+
+<% end %>
