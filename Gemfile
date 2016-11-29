@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise', '~> 4.2'
-
+gem 'paperclip', '~> 5.1'
 
 
 group :development, :test do

@@ -1,0 +1,25 @@
+<h1>Новая новость</h1>
+
+<%= form_for @one_news do |n| %>
+	
+	Номер по порядку:
+	<%= n.text_field :row_num, :value => next_row_num_news %><br/><br/>
+
+	Английский заголовок:
+	<%= n.text_field :title_en %><br/>
+
+	Английский текст:
+	<%= n.text_area :text_en %><br/><br/><br/>
+
+
+	Русский заголовок:
+	<%= n.text_field :title_ru %><br/>
+
+	Русский текст:
+	<%= n.text_area :text_ru %><br/><br/>
+
+
+	<%= n.submit "Создать" %><br>
+	<%=link_to "Назад", news_index_path %>
+
+<% end %>

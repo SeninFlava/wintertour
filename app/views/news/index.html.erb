@@ -1,0 +1,26 @@
+<h1>All news</h1>
+
+<% if current_user.admin? %>
+	<%= link_to "Create news", new_news_path %> <br><br>
+<% end %>
+
+<% @all_news.each do |n| %>
+	
+	<!--ID=<%= n.id %><br>-->
+	row_num=<%= n.row_num %><br>
+	title_en=<%= n.title_en %><br>
+	text_en=<%= n.text_en %><br><br>
+	title_ru=<%= n.title_ru %><br>
+	text_ru=<%= n.text_ru %><br><br>
+
+<% if current_user.admin? %>
+	<%= link_to "Edit", edit_news_path(n.id) %> | 
+	<%= link_to "Delete", destroy_news_path(n.id), :data => {:confirm => "Delete #{n.title_ru}/#{n.title_en}?"}, method: :delete %>
+<% end %>
+
+
+	<br><br><br>
+
+	
+
+<% end %>

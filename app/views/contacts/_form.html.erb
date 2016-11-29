@@ -1,0 +1,61 @@
+<%= form_for @contact, :html => { :multipart => true } do |f| %>
+
+  
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :row_num %><br>
+    <%= f.number_field :row_num, :value => next_row_num_contacts %>
+  </div>
+  <div class="field">
+    <%= f.label :name_en %><br>
+    <%= f.text_field :name_en %>
+  </div>
+  <div class="field">
+    <%= f.label :name_ru %><br>
+    <%= f.text_field :name_ru %>
+  </div>
+  <div class="field">
+    <%= f.label :description_en %><br>
+    <%= f.text_field :description_en %>
+  </div>
+  <div class="field">
+    <%= f.label :description_ru %><br>
+    <%= f.text_field :description_ru %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  
+  <div class="field">
+
+        <% if @contact.avatar.exists? %>
+            Avatar: <%= image_tag @contact.avatar.url(:thumb) %>
+            <%= link_to 'Delete avatar', "#" %>
+        <% end %>    <br>
+
+    <%= f.file_field :avatar %>
+  </div>
+
+  
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

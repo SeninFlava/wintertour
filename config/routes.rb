@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :contacts
+  #get 'news/new'
+  #get 'news/show'
+  #get 'news/index'
+  #get 'news/edit'
+  #get 'news/create'
+
+  resources :news
+  delete '/news/:id' => 'news#destroy', as: 'destroy_news'
+
   root 'main_pages#home'
 
   get 'main_pages/home'

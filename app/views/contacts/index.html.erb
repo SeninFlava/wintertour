@@ -1,0 +1,35 @@
+
+<% if current_user_admin? %>
+  <%= link_to 'New Contact', new_contact_path %>
+<% end %>
+
+<h1>Список контактов</h1>
+
+    <% @contacts.each do |contact| %>
+        
+        Row num: <%= contact.row_num %><br>
+        Name en: <%= contact.name_en %><br>
+        Name ru: <%= contact.name_ru %><br>
+        Description en: <%= contact.description_en %><br>
+        Description ru: <%= contact.description_ru %><br>
+        Phone: <%= contact.phone %><br>
+        Email: <%= contact.email %><br>
+
+        <% if contact.avatar.exists? %>
+            Avatar: <%= image_tag contact.avatar.url(:thumb) %>
+        <% end %>
+
+        <% if current_user_admin? %>
+        <br>
+        <%= link_to 'Show', contact %> |
+        <%= link_to 'Edit', edit_contact_path(contact) %> |
+        <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+
+        <br><br>
+        <br><br>
+    
+    <% end %>
+
+<br>
+

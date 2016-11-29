@@ -1,0 +1,49 @@
+
+<h2>Контактные данные</h2>
+
+<p>
+  <strong>Row num:</strong>
+  <%= @contact.row_num %>
+</p>
+
+<p>
+  <strong>Name en:</strong>
+  <%= @contact.name_en %>
+</p>
+
+<p>
+  <strong>Name ru:</strong>
+  <%= @contact.name_ru %>
+</p>
+
+<p>
+  <strong>Description en:</strong>
+  <%= @contact.description_en %>
+</p>
+
+<p>
+  <strong>Description ru:</strong>
+  <%= @contact.description_ru %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @contact.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+        <% if @contact.avatar.exists? %>
+            Avatar: <%= image_tag @contact.avatar.url(:thumb) %>
+        <% end %>
+
+        <br>
+
+<% if current_user_admin? %>
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<% end %>
+
+<%= link_to 'Back', contacts_path %>
