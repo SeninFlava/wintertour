@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   before_action :is_user_login
   before_action :is_user_admin, except: [:show, :index]
 
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :delete_avatar]
 
 
   # GET /contacts
@@ -65,6 +65,14 @@ class ContactsController < ApplicationController
     end
   end
 
+  def delete_avatar
+    @contact.avatar = nil
+    if @contact.save
+        redirect_to "/contacts/#{@contact.id}/edit", notice: "Изображение удалено"
+    else
+        redirect_to "/contacts/#{@contact.id}/edit", alert: "Изображение не удалено"    
+    end
+  end
 
 
 

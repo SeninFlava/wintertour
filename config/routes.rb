@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  post 'contacts/:id/delete_avatar' => 'contacts#delete_avatar', as: 'delete_avatar'
+  #delete 'contacts/:id/delete_avatar' => 'contacts#delete_avatar'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

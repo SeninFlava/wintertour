@@ -80,5 +80,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'https://winter-tour.herokuapp.com', port: 3000 }
 
+  config.current_host = "https://winter-tour.herokuapp.com"
+
   
 end

@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= f.label :row_num %><br>
-    <%= f.number_field :row_num, :value => next_row_num_contacts %>
+    <%= f.number_field :row_num, :value => next_row_num_contacts(@contact) %>
   </div>
   <div class="field">
     <%= f.label :name_en %><br>
@@ -47,7 +47,7 @@
 
         <% if @contact.avatar.exists? %>
             Avatar: <%= image_tag @contact.avatar.url(:thumb) %>
-            <%= link_to 'Delete avatar', "#" %>
+            <%= link_to 'Delete avatar', delete_avatar_path(@contact), method: :post %>
         <% end %>    <br>
 
     <%= f.file_field :avatar %>
