@@ -37,7 +37,9 @@
 </p>
 
         <% if @contact.avatar.exists? %>
-            Avatar: <%= image_tag @contact.avatar.url(:thumb) %>
+            Avatar: <%= image_tag @contact.avatar.url(:thumb) %> <br/>
+
+            url: <%= @contact.avatar.url %>
         <% end %>
 
         <br>
