@@ -83,6 +83,29 @@ class ContactsController < ApplicationController
     end
   end
 
+  def up
+    one_contact = Contact.find_by(id: params[:id])    
+    all_contacts = Contact.all
+
+    if up_object(one_contact, all_contacts)
+      redirect_to '/contacts', notice: "Контакт #{one_contact.name_en} поднят в списке"
+    else
+      redirect_to '/contacts', notice: "Контакт #{one_contact.name_en} уже первый в списке"    
+    end
+  end
+
+
+  def down
+    one_contact = Contact.find_by(id: params[:id])    
+    all_contacts = Contact.all
+
+    if down_object(one_contact, all_contacts)
+      redirect_to '/contacts', notice: "Контакт #{one_contact.name_en} опущен в списке"
+    else
+      redirect_to '/contacts', notice: "Контакт #{one_contact.name_en} уже последний в списке"    
+    end
+  end
+
 
 
   private

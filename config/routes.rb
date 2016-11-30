@@ -19,6 +19,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   post 'contacts/:id/delete_avatar' => 'contacts#delete_avatar', as: 'delete_avatar'
+  
+  post 'news/:id/up' => 'news#up', as: 'news_up'
+  post 'news/:id/down' => 'news#down', as: 'news_down'
+
+  post 'contacts/:id/up' => 'contacts#up', as: 'contact_up'
+  post 'contacts/:id/down' => 'contacts#down', as: 'contact_down'
+
   #delete 'contacts/:id/delete_avatar' => 'contacts#delete_avatar'
 
 

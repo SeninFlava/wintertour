@@ -1,7 +1,8 @@
 <h1>Изменить новость</h1>
 
 <%= form_for @one_news do |n| %>
-	
+	id: <%= @one_news.id %><br><br>
+
 	Номер по порядку:
 	<%= n.text_field :row_num %><br/><br/>
 

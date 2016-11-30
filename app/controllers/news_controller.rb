@@ -13,7 +13,6 @@ class NewsController < ApplicationController
     else
         redirect_to '/news', alert: "Ошибка при создании новости"
     end
-
   end
 
 
@@ -30,9 +29,10 @@ class NewsController < ApplicationController
   end
 
   def update
-    @one_news = News.find_by(params[:id])
+    @one_news = News.find_by(id: params[:id])
     if @one_news.update(news_params)
-        redirect_to '/news', notice: 'Новость изменена'
+        @all_news = News.all.order(row_num: :desc)
+        render :index, notice: 'Новость изменена'
     else
         render action: 'edit'
     end
@@ -49,8 +49,35 @@ class NewsController < ApplicationController
       redirect_to '/news', alert: "Новость с id=#{params[:id]} отсутствует"
     end
 
+  end
+
+
+
+  #поднять новость в списке
+  def up
+    one_news = News.find_by(id: params[:id])
+    all_news = News.all
+
+    if up_object(one_news, all_news)
+      redirect_to '/news', notice: "Новость #{one_news.title_en} поднята в списке"
+    else
+      redirect_to '/news', notice: "Новость #{one_news.title_en} первая в списке"    
+    end       
 
   end
+
+  #опустить новость в списке
+  def down
+    one_news = News.find_by(id: params[:id])
+    all_news = News.all
+
+    if down_object(one_news, all_news)
+      redirect_to '/news', notice: "Новость #{one_news.title_en} опущена в списке"
+    else
+      redirect_to '/news', notice: "Новость #{one_news.title_en} последняя в списке"    
+    end
+  end
+
 
 
 private

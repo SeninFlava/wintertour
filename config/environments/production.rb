@@ -90,6 +90,10 @@ Rails.application.configure do
       secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
       s3_region: ENV.fetch('AWS_REGION'),
     }
+
+  config.i18n.enforce_available_locales = true
+  config.i18n.default_locale = :en
+
 }
   
 end

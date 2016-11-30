@@ -42,5 +42,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   #config.current_host = "http://localhost:3000"
-
+  config.i18n.enforce_available_locales = true
+  config.i18n.default_locale = :en
 end

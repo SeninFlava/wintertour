@@ -3,7 +3,7 @@
 <%= form_for @one_news do |n| %>
 	
 	Номер по порядку:
-	<%= n.text_field :row_num, :value => next_row_num_news %><br/><br/>
+	<%= n.text_field :row_num, :value => next_row_num(@one_news, News.all) %><br/><br/>
 
 	Английский заголовок:
 	<%= n.text_field :title_en %><br/>

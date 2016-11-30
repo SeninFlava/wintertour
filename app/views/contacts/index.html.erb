@@ -8,10 +8,17 @@
     <% @contacts.each do |contact| %>
         
         Row num: <%= contact.row_num %><br>
-        Name en: <%= contact.name_en %><br>
-        Name ru: <%= contact.name_ru %><br>
-        Description en: <%= contact.description_en %><br>
-        Description ru: <%= contact.description_ru %><br>
+
+        <% if current_user_lang == "ru" || current_user_admin? %>
+            Name ru: <%= contact.name_ru %><br>
+            Description ru: <%= contact.description_ru %><br>
+        <% end %>
+
+        <% if current_user_lang != "ru" || current_user_admin? %>
+            Name en: <%= contact.name_en %><br>
+            Description en: <%= contact.description_en %><br>
+        <% end %>
+
         Phone: <%= contact.phone %><br>
         Email: <%= contact.email %><br>
 
@@ -23,7 +30,10 @@
         <br>
         <%= link_to 'Show', contact %> |
         <%= link_to 'Edit', edit_contact_path(contact) %> |
-        <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+        <%= link_to 'Up', contact_up_path(contact), method: :post %> |
+        <%= link_to 'Down', contact_down_path(contact), method: :post %>
+
         <% end %>
 
         <br><br>

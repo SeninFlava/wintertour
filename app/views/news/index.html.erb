@@ -6,16 +6,29 @@
 
 <% @all_news.each do |n| %>
 	
-	<!--ID=<%= n.id %><br>-->
+	ID=<%= n.id %><br>
 	row_num=<%= n.row_num %><br>
-	title_en=<%= n.title_en %><br>
-	text_en=<%= n.text_en %><br><br>
-	title_ru=<%= n.title_ru %><br>
-	text_ru=<%= n.text_ru %><br><br>
+	
+	<% if current_user_lang == "ru" || current_user_admin? %>
+		title_ru=<%= n.title_ru %><br>
+		text_ru=<%= n.text_ru %><br><br>
+	<% end %>
+
+	<% if current_user_lang != "ru" || current_user_admin? %>	
+		title_en=<%= n.title_en %><br>
+		text_en=<%= n.text_en %><br><br>
+	<% end %>
+	
+	Posted <%= time_ago_in_words(n.created_at) %> <br/>	
+	  
 
 <% if current_user.admin? %>
 	<%= link_to "Edit", edit_news_path(n.id) %> | 
-	<%= link_to "Delete", destroy_news_path(n.id), :data => {:confirm => "Delete #{n.title_ru}/#{n.title_en}?"}, method: :delete %>
+	<%= link_to "Delete", destroy_news_path(n.id), :data => {:confirm => "Delete #{n.title_ru}/#{n.title_en}?"}, method: :delete %> 
+	<br>
+	<%= link_to "Up", news_up_path(n.id), method: :post  %> | 
+	<%= link_to "Down", news_down_path(n), method: :post %>
+
 <% end %>
 
 

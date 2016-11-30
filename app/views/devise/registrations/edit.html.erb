@@ -13,6 +13,12 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="lang">
+    <%= f.label :lang %><br />
+    <%= f.select(:lang, [["Russian","ru"],["English","en"]], { include_blank: false , selected: current_user.lang }, {class: 'form-control'}) %>
+  </div>
+
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
