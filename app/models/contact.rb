@@ -15,8 +15,13 @@ class Contact < ActiveRecord::Base
   	end
 
     def avatar_url
-      Rails.application.config.my_host + avatar.url
-      Rails.application.config.current_host + avatar.url
+      if self.avatar.file?
+        avatar.url
+      else
+        ""
+      end
+      #Rails.application.config.current_host + avatar.url
+      #avatar.url
     end
 
 

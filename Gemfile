@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
+gem 'aws-sdk', '~> 2.3'
 
 group :production do
 	gem 'pg'
