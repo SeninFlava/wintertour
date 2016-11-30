@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :is_user_login
+  before_action :is_user_login, except: [:show, :index]
   before_action :is_user_admin, except: [:show, :index]
 
   before_action :set_contact, only: [:show, :edit, :update, :destroy, :delete_avatar]
@@ -9,12 +9,21 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.all.order(row_num: :desc)
+    respond_to do |format|
+      format.html { is_user_login }
+      format.json {}
+    end
   end
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    respond_to do |format|
+      format.html { is_user_login }
+      format.json {}
+    end
   end
+
 
   # GET /contacts/new
   def new
